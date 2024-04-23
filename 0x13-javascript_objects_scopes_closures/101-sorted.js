@@ -1,9 +1,15 @@
 #!/usr/bin/node
-exports.dict = {
-	  89: 1,
-	  90: 2,
-	  91: 1,
-	  92: 3,
-	  93: 1,
-	  94: 2
-};
+
+const dict = require('./101-data');
+
+const userIdsByOccurrence = {};
+
+for (const userId in dict) {
+  const occurrence = dict[userId];
+  if (!userIdsByOccurrence.hasOwnProperty(occurrence)) {
+    userIdsByOccurrence[occurrence] = [];
+  }
+  userIdsByOccurrence[occurrence].push(userId);
+}
+
+console.log(userIdsByOccurrence);
